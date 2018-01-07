@@ -1,0 +1,92 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "roper"
+
+include GLI::App
+
+program_desc "Roper is a CLI tool used to help stage a dockerized web app."
+
+version Roper::VERSION
+
+subcommand_option_handling :normal
+arguments :strict
+
+desc "Pulls in github repo locally and runs docker-compose up on it."
+arg_name "<OWNER>/<NAME>"
+command :lasso do |c|
+  c.desc "<REPO_BRANCH>"
+  c.default_value "master"
+  c.flag :b, :branch
+
+  c.desc "<STATUS_URL>"
+  c.flag :l, :status_url
+
+  c.desc "URL protocol to use in target_url for final traefik hosted container."
+  c.default_value "https"
+  c.flag :p, :protocol
+
+  c.desc "URL domain to use iin target_url for final traefik hosted container."
+  c.flag :d, :domain
+
+  c.action do |global_options, options, args|
+    repo = args[0]
+    branch = options[:branch]
+    Roper::CLI.lasso(repo, branch, options)
+    puts "lasso command ran"
+  end
+end
+
+desc "Runs docker-compose down on local copy of repo and deletes the repo contents."
+arg_name "<OWNER>/<NAME>"
+command :release do |c|
+  c.desc "<REPO_BRANCH>"
+  c.default_value "master"
+  c.flag :b, :branch
+
+  c.action do |global_options, options, args|
+    repo = args[0]
+    branch = options[:branch]
+    Roper::CLI.release(repo, branch, options)
+    puts "release command ran"
+  end
+end
+
+pre do |global, command, options, args|
+  if args.count == 0
+    raise "Repository is required in the form '<OWNER>/<NAME>'."
+  end
+
+  if args.count > 1
+    raise "Unexpected arguments passed in, expecting only one argument."
+  end
+
+  if options[:branch].nil?
+    raise "A branch is required."
+  end
+
+  if command.name == :lasso
+    raise "Protocol must be either 'http' or 'https'" unless ["http", "https"].include?(options[:protocol])
+  end
+
+  # Pre logic here
+  # Return true to proceed; false to abort and not call the
+  # chosen command
+  # Use skips_pre before a command to skip this block
+  # on that command only
+  true
+end
+
+post do |global, command, options, args|
+  # Post logic here
+  # Use skips_post before a command to skip this
+  # block on that command only
+end
+
+on_error do |exception|
+  # Error logic here
+  # return false to skip default error handling
+  true
+end
+
+exit run(ARGV)
