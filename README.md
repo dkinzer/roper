@@ -1,4 +1,4 @@
-# Roper
+# Roper [![Build Status](https://travis-ci.org/tulibraries/roper.svg?branch=master)](https://travis-ci.org/tulibraries/roper)
 
 Roper is a cli tool used to help stage a dockerized web app.  There are some
 assumptions made about the environment that roper runs in.  The main one is
