@@ -11,26 +11,29 @@ version Roper::VERSION
 
 subcommand_option_handling :normal
 arguments :strict
+sort_help :manually
 
 desc "Pulls in github repo locally and runs docker-compose up on it."
-arg_name "<OWNER>/<NAME>"
 command :lasso do |c|
-  c.desc "<REPO_BRANCH>"
-  c.default_value "master"
-  c.flag :b, :branch
+  c.desc "* The repo full name '<owner>/<name>'"
+  c.flag :r, :repo
 
-  c.desc "<STATUS_URL>"
+  c.desc "The branch name"
+  c.flag :b, :branch
+  c.default_value "master"
+
+  c.desc "A URL to a build status page."
   c.flag :l, :status_url
 
   c.desc "URL protocol to use in target_url for final traefik hosted container."
   c.default_value "https"
   c.flag :p, :protocol
 
-  c.desc "URL domain to use iin target_url for final traefik hosted container."
+  c.desc "URL domain to use in target_url for final traefik hosted container."
   c.flag :d, :domain
 
   c.action do |global_options, options, args|
-    repo = args[0]
+    repo = options[:repo]
     branch = options[:branch]
     Roper::CLI.lasso(repo, branch, options)
     puts "lasso command ran"
@@ -38,14 +41,16 @@ command :lasso do |c|
 end
 
 desc "Runs docker-compose down on local copy of repo and deletes the repo contents."
-arg_name "<OWNER>/<NAME>"
 command :release do |c|
-  c.desc "<REPO_BRANCH>"
-  c.default_value "master"
+  c.desc "* The repo full name '<owner>/<name>'"
+  c.flag :r, :repo
+
+  c.desc "The branch name"
   c.flag :b, :branch
+  c.default_value "master"
 
   c.action do |global_options, options, args|
-    repo = args[0]
+    repo = options[:repo]
     branch = options[:branch]
     Roper::CLI.release(repo, branch, options)
     puts "release command ran"
@@ -53,16 +58,8 @@ command :release do |c|
 end
 
 pre do |global, command, options, args|
-  if args.count == 0
-    raise "Repository is required in the form '<OWNER>/<NAME>'."
-  end
-
-  if args.count > 1
-    raise "Unexpected arguments passed in, expecting only one argument."
-  end
-
-  if options[:branch].nil?
-    raise "A branch is required."
+  if args.count > 0
+    raise "Unexpected arguments, this command does not take any arguments."
   end
 
   if command.name == :lasso

@@ -47,9 +47,9 @@ Or install it yourself as:
 
 ## Usage
 
-`roper lasso "<REPO_OWNER>/<REPO_NAME>" [--branch=<BRANCH_NAME>] [--status-url=<STATUS_URL>]`
+`roper lasso "--repo=<REPO_OWNER>/<REPO_NAME>" [--branch=<BRANCH_NAME>] [--status-url=<STATUS_URL>]`
 
-`roper release "<REPO_OWNER>/<REPO_NAME>" [--branch=<BRANCH_NAME>]`
+`roper release "--repo=<REPO_OWNER>/<REPO_NAME>" [--branch=<BRANCH_NAME>]`
 
 OR:
 
