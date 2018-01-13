@@ -22,6 +22,9 @@ command :lasso do |c|
   c.flag :b, :branch
   c.default_value "master"
 
+  c.desc "The sha reference that we will post to."
+  c.flag :r, :ref
+
   c.desc "A URL to a build status page."
   c.flag :l, :status_url
 

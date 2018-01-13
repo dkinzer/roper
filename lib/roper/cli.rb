@@ -12,7 +12,7 @@ module Roper
       @options = options
       @git = Roper::Repo.new(repo, branch)
       @driver = Roper::Driver.new(repo, branch)
-      @hub = Roper::Hub.new(repo)
+      @hub = Roper::Hub.new(repo, ref)
     end
 
     def self.lasso(repo, branch, options = {})
@@ -24,13 +24,13 @@ module Roper
     end
 
     def lasso
-      @git.mount || @git.update
-      @hub.create_status(@git.ref, "pending", status_pending.merge(status_url))
+      @hub.create_status("pending", status_pending.merge(status_url))
       begin
+        @git.mount || @git.update
         @driver.up
-        @hub.create_status(@git.ref, "success", status_success.merge(success_url))
+        @hub.create_status("success", status_success.merge(success_url))
       rescue
-        @hub.create_status(@git.ref, "failure", status_failure.merge(status_url))
+        @hub.create_status("failure", status_failure.merge(status_url))
       end
     end
 
@@ -40,6 +40,13 @@ module Roper
     end
 
     private
+      def ref
+        @options[:ref] || begin
+          @git.mount || @git.update
+          @git.ref
+        end
+      end
+
       def status_url
         status_url = @options[:status_url]
         status_url ? { status_url: status_url } : {}
