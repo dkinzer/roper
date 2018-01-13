@@ -41,7 +41,7 @@ module Roper
 
     private
       def ref
-        @options[:ref] || begin
+        @options[:sha] || begin
           @git.mount || @git.update
           @git.ref
         end

@@ -13,7 +13,7 @@ subcommand_option_handling :normal
 arguments :strict
 sort_help :manually
 
-desc "Pulls in github repo locally and runs docker-compose up on it."
+desc "Pulls in github repo locally and runs docker-compose up on it"
 command :lasso do |c|
   c.desc "* The repo full name '<owner>/<name>'"
   c.flag :r, :repo
@@ -22,17 +22,17 @@ command :lasso do |c|
   c.flag :b, :branch
   c.default_value "master"
 
-  c.desc "The sha reference that we will post to."
-  c.flag :r, :ref
+  c.desc "The sha reference that we will post to"
+  c.flag :s, :sha
 
-  c.desc "A URL to a build status page."
+  c.desc "A URL to a build status page"
   c.flag :l, :status_url
 
-  c.desc "URL protocol to use in target_url for final traefik hosted container."
+  c.desc "URL protocol to use in target_url for final traefik hosted container"
   c.default_value "https"
   c.flag :p, :protocol
 
-  c.desc "URL domain to use in target_url for final traefik hosted container."
+  c.desc "URL domain to use in target_url for final traefik hosted container"
   c.flag :d, :domain
 
   c.action do |global_options, options, args|
@@ -43,7 +43,7 @@ command :lasso do |c|
   end
 end
 
-desc "Runs docker-compose down on local copy of repo and deletes the repo contents."
+desc "Runs docker-compose down on local copy of repo and deletes the repo contents"
 command :release do |c|
   c.desc "* The repo full name '<owner>/<name>'"
   c.flag :r, :repo
