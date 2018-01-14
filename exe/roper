@@ -61,9 +61,9 @@ command :release do |c|
 end
 
 pre do |global, command, options, args|
+  help_now! "--repo is required" unless !options[:repo].nil?
 
   if command.name == :lasso
-    help_now! "--repo is required" unless !options[:repo].nil?
     help_now! "Protocol must be either 'http' or 'https'" unless ["http", "https"].include?(options[:protocol])
   end
 
