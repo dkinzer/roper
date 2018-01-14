@@ -5,25 +5,27 @@ require "spec_helper"
 RSpec.describe Roper::Driver do
 
   let(:driver) { Roper::Driver.new(@test_repo, @test_branch) }
-  let(:compose) { Docker::Compose.new }
+  let(:compose) { Docker::Compose::Session.new }
   let(:mount_path) { Roper::mount_path(@test_repo, @test_branch) }
   let(:repo) { Octokit::Repository.new @test_repo }
 
   before(:example) do
     allow(Dir).to receive_messages(chdir: nil, pwd: nil)
-    allow(Docker::Compose).to receive(:new).and_return(compose)
+    allow(Docker::Compose::Session).to receive(:new).and_return(compose)
     allow(compose).to receive(:up)
     allow(compose).to receive(:down)
   end
 
-  describe ".up" do
-    it "changes working directory to mount_path" do
-      expect(Dir).to receive(:chdir).with(mount_path)
-      driver.up
+  describe ".initialize" do
+    it "Uses mount_path to initialize docker compose session" do
+      expect(Docker::Compose::Session).to receive(:new).with(dir: mount_path)
+      Roper::Driver.new(@test_repo, @test_branch)
     end
+  end
 
-    it "runs docker compose up" do
-      expect(compose).to receive(:up)
+  describe ".up" do
+    it "runs docker compose up in detached mode with fo" do
+      expect(compose).to receive(:up).with(detached: true)
       driver.up
     end
 
@@ -36,11 +38,6 @@ RSpec.describe Roper::Driver do
   end
 
   describe ".down" do
-    it "changes working directory to mount_path" do
-      expect(Dir).to receive(:chdir).with(mount_path)
-      driver.down
-    end
-
     it "runs docker compose down" do
       expect(compose).to receive(:down)
       driver.down

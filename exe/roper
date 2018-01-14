@@ -61,12 +61,10 @@ command :release do |c|
 end
 
 pre do |global, command, options, args|
-  if args.count > 0
-    raise "Unexpected arguments, this command does not take any arguments."
-  end
 
   if command.name == :lasso
-    raise "Protocol must be either 'http' or 'https'" unless ["http", "https"].include?(options[:protocol])
+    help_now! "--repo is required" unless !options[:repo].nil?
+    help_now! "Protocol must be either 'http' or 'https'" unless ["http", "https"].include?(options[:protocol])
   end
 
   # Pre logic here
