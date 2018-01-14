@@ -49,13 +49,13 @@ module Roper
 
       def status_url
         status_url = @options[:status_url]
-        status_url ? { status_url: status_url } : {}
+        status_url ? { target_url: status_url } : {}
       end
 
       def success_url
         protocol = @options[:protocol] || "https"
         domain = @options[:domain] || ENV["DOMAIN"]
-        {  status_url: "#{protocol}://#{@branch}.#{domain}" }
+        {  target_url: "#{protocol}://#{@branch}.#{domain}" }
       end
 
       def status_pending

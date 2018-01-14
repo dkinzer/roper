@@ -41,7 +41,7 @@ RSpec.describe Roper::CLI do
     it "sets github pr status to in progress" do
       expect(@hub).to receive(:create_status).with("pending",
         description: "The build process is in progress.",
-        status_url: @target_url)
+        target_url: @target_url)
     end
 
     it "builds the project" do
@@ -51,7 +51,7 @@ RSpec.describe Roper::CLI do
     it "returns a successful build" do
       expect(@hub).to receive(:create_status).with("success",
         description: "The PR brach was successfully built.",
-        status_url: "https://#{@test_branch}.foobar.net")
+        target_url: "https://#{@test_branch}.foobar.net")
     end
 
     context "An error occurs durring docker up process." do
@@ -62,7 +62,7 @@ RSpec.describe Roper::CLI do
       it "sets github pr status to failure" do
         expect(@hub).to receive(:create_status).with("failure",
           description: "The PR branch failed to build.",
-          status_url: @target_url)
+          target_url: @target_url)
       end
     end
   end
