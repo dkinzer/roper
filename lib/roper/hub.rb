@@ -13,7 +13,7 @@ module Roper
     end
 
     def create_status(state, options = {})
-      @client.create_status(@repo, @ref, state, options.merge(context: "Roper Stager"))
+      @client.create_status(@repo, @ref, state, options.merge(context: "roper"))
     end
   end
 end

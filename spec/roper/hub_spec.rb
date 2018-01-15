@@ -10,7 +10,7 @@ RSpec.describe Roper::Hub do
       info = {}
       subject.create_status("success", info)
       assert_requested :post, github_url("/repos/#{@test_repo}/statuses/#{@test_ref}"),
-        body: hash_including(context: "Roper Stager")
+        body: hash_including(context: "roper")
     end
   end
 
