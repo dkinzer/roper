@@ -24,8 +24,8 @@ RSpec.describe Roper::Driver do
   end
 
   describe ".up" do
-    it "runs docker compose up in detached mode with fo" do
-      expect(compose).to receive(:up).with(detached: true)
+    it "runs docker compose up in detached mode with forced rebuild" do
+      expect(compose).to receive(:up).with(detached: true, build: true)
       driver.up
     end
 

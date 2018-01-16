@@ -13,7 +13,7 @@ module Roper
 
     def up
       set_env_variables
-      @compose.up(detached: true)
+      @compose.up(detached: true, build: true)
     end
 
     def down
