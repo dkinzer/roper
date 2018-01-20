@@ -62,10 +62,6 @@ module Roper
         { description: "The build process is in progress." }
       end
 
-      def status_error
-        { description: "The build process had irrecoverrable error." }
-      end
-
       def status_failure
         { description: "The PR branch failed to build." }
       end
