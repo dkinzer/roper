@@ -28,6 +28,11 @@ RSpec.describe Roper::Repo do
       expect(repository).to receive(:checkout).with(@test_branch)
       git.mount
     end
+
+    it "recovers from unknown repo" do
+      allow(Git).to receive_messages(clone: nil)
+      expect(git.mount).to be_nil
+    end
   end
 
   describe ".update" do
