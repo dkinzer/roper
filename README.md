@@ -1,4 +1,4 @@
-# Roper [![Build Status](https://travis-ci.org/tulibraries/roper.svg?branch=master)](https://travis-ci.org/tulibraries/roper)
+# Roper [![Build Status](https://travis-ci.org/tulibraries/roper.svg?branch=master)](https://travis-ci.org/tulibraries/roper) [![Coverage Status](https://coveralls.io/repos/github/tulibraries/roper/badge.svg?branch=master)](https://coveralls.io/github/tulibraries/roper?branch=master) [![Docs](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/github/tulibraries/roper/master)
 
 Roper is a cli tool used to help stage a dockerized web app.  There are some
 assumptions made about the environment that roper runs in.  The main one is
@@ -20,7 +20,7 @@ Once Roper is configured it knows how to:
   status. (TODO: make optinal)
 * When a PR is merged or closed the resources can be released/recovered.
 
-At this point Roper only defines a cli interface so there is no way for GitHub
+Currently, Roper only defines a cli interface so there is no way for GitHub
 to communicate with it direclty via a webhook or whatnot. It's assumed that it
 will be used in conjuction with a service like jenkins ci to handle the webook
 part of the communication and trigger a roper staging on a desired Github event

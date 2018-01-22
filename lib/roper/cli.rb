@@ -6,7 +6,19 @@ require "roper/hub"
 require "roper/driver"
 
 module Roper
+  # This is a controller, and the main entry point into the rest of the
+  # library.  It composes Hub, Repo and Driver to define the main entry
+  # methods, lasso and release.
   class CLI
+    # @param [String] repo A GitHub reposiory in the form <user>/<name>
+    # @param [branch] the name of a branch in the reposiory
+    # @param options [Hash] A customizable set of options
+    #
+    # @options :context [String] A context to differentiate this status from others (default: "roper")
+    # @options :status_url [String] A link to more details about this status
+    # @options :sha [String] ref The sha for a commit
+    # @options :protocol [String] https or http
+    # @options :domain [String] domain for traefik server
     def initialize(repo, branch, options = {})
       @branch = branch
       @options = options
@@ -15,14 +27,24 @@ module Roper
       @hub = Roper::Hub.new(repo, ref)
     end
 
+    # Creates an instance of CLI and runs release
+    #
+    # @see initialize
+    # @see release
     def self.lasso(repo, branch, options = {})
       self.new(repo, branch, options).lasso
     end
 
+    # Creates an instance of CLI and runs lasso
+    #
+    # @see initialize
+    # @see lasso
     def self.release(repo, branch, options = {})
       self.new(repo, branch, options).release
     end
 
+    # Update the GitHub PR with a pending status, then pull in the repository
+    # and build it by running docker-compose up on it
     def lasso
       @hub.create_status("pending", status_pending.merge(status_url))
       begin
@@ -34,6 +56,7 @@ module Roper
       end
     end
 
+    # Run docker-compose down on the project and delete the assets
     def release
       @driver.down
       @git.unmount
