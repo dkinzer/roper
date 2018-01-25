@@ -20,11 +20,11 @@ module Roper
     # @options :protocol [String] https or http
     # @options :domain [String] domain for traefik server
     def initialize(repo, branch, options = {})
+      @repo = repo
       @branch = branch
       @options = options
       @git = Roper::Repo.new(repo, branch)
       @driver = Roper::Driver.new(repo, branch)
-      @hub = Roper::Hub.new(repo, ref)
     end
 
     # Creates an instance of CLI and runs release
@@ -46,6 +46,7 @@ module Roper
     # Update the GitHub PR with a pending status, then pull in the repository
     # and build it by running docker-compose up on it
     def lasso
+      @hub ||= Roper::Hub.new(@repo, ref)
       @hub.create_status("pending", status_pending.merge(status_url))
       begin
         @git.mount || @git.update

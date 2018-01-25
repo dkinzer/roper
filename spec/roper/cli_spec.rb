@@ -79,5 +79,13 @@ RSpec.describe Roper::CLI do
     it "unmounts the repository" do
       expect(@git).to receive(:unmount)
     end
+
+    it "does not try to mount the repository" do
+      expect(@git).not_to receive(:mount)
+    end
+
+    it "does not try to update the repository" do
+      expect(@git).not_to receive(:update)
+    end
   end
 end

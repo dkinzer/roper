@@ -11,6 +11,7 @@ RSpec.describe Roper::Repo do
 
   before(:example) do
     Git = class_double("Git::Base")
+    allow(FileUtils).to receive(:rm_r).and_return(nil)
     allow(Git).to receive_messages(clone: repository, open: repository)
     allow(repository).to receive(:checkout)
     allow(repository).to receive(:pull)
@@ -49,8 +50,12 @@ RSpec.describe Roper::Repo do
 
   describe ".unmount" do
     it "deletes the repo working directory" do
-      allow(FileUtils).to receive(:rm_r).and_return(nil)
       expect(FileUtils).to receive(:rm_r).with(mount_path)
+      git.unmount
+    end
+
+    it "does not try to update the repo when releasing" do
+      expect(Git).not_to receive(:pull)
       git.unmount
     end
   end
