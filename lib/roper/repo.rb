@@ -8,7 +8,7 @@ module Roper
   # This class is concerned with the repository resource itself
   class Repo
     # @param [String] repo A GitHub reposiory in the form <user>/<name>
-    # @param [branch] the name of a branch in the reposiory
+    # @param [String] branch The name of a branch in the reposiory
     def initialize(repo, branch)
       @branch = branch
       @repo = Octokit::Repository.new(repo)

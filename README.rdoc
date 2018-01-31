@@ -1,5 +1,7 @@
 = Roper {<img src="https://travis-ci.org/tulibraries/roper.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/tulibraries/roper] {<img src="https://coveralls.io/repos/github/tulibraries/roper/badge.svg?branch=master" alt="Coverage Status" />}[https://coveralls.io/github/tulibraries/roper?branch=master] {<img src="https://img.shields.io/badge/docs-rubydoc-blue.svg" alt="Docs" />}[http://www.rubydoc.info/github/tulibraries/roper/master]
 
+rdoc-image:Figure-eight_knot.svg
+
 Roper is a cli tool used to help stage a dockerized web app.  There are some
 assumptions made about the environment that roper runs in.  The main one is
 that traefik has been configured to run via the docker backend and that the

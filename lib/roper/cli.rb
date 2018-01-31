@@ -11,14 +11,14 @@ module Roper
   # methods, lasso and release.
   class CLI
     # @param [String] repo A GitHub reposiory in the form <user>/<name>
-    # @param [branch] the name of a branch in the reposiory
-    # @param options [Hash] A customizable set of options
+    # @param [String] branch the name of a branch in the reposiory
+    # @param [Hash] options A customizable set of options
     #
-    # @options :context [String] A context to differentiate this status from others (default: "roper")
-    # @options :status_url [String] A link to more details about this status
-    # @options :sha [String] ref The sha for a commit
-    # @options :protocol [String] https or http
-    # @options :domain [String] domain for traefik server
+    # @option :context [String] A context to differentiate this status from others (default: "roper")
+    # @option :status_url [String] A link to more details about this status
+    # @option :sha [String] ref The sha for a commit
+    # @option :protocol [String] https or http
+    # @option :domain [String] domain for traefik server
     def initialize(repo, branch, options = {})
       @repo = repo
       @branch = branch

@@ -24,9 +24,9 @@ module Roper
     # @param state [String] The state: pending, success, failure
     # @param options [Hash] A customizable set of options
     #
-    # @options :context [String] A context to differentiate this status from others (default: "roper")
-    # @options :target_url [String] A link to more details about this status
-    # @options :description [String] A short human-readable description of this status
+    # @option :context [String] A context to differentiate this status from others (default: "roper")
+    # @option :target_url [String] A link to more details about this status
+    # @option :description [String] A short human-readable description of this status
     #
     # @return [Sawyer::Resource] A short human-readable description of this status
     def create_status(state, options = {})

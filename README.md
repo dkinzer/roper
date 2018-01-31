@@ -1,5 +1,7 @@
 # Roper [![Build Status](https://travis-ci.org/tulibraries/roper.svg?branch=master)](https://travis-ci.org/tulibraries/roper) [![Coverage Status](https://coveralls.io/repos/github/tulibraries/roper/badge.svg?branch=master)](https://coveralls.io/github/tulibraries/roper?branch=master) [![Docs](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/github/tulibraries/roper/master)
 
+<p align="center"><img src="Figure-eight_knot.svg"></p>
+
 Roper is a cli tool used to help stage a dockerized web app.  There are some
 assumptions made about the environment that roper runs in.  The main one is
 that traefik has been configured to run via the docker backend and that the
@@ -12,12 +14,12 @@ another git repository service.
 
 Once Roper is configured it knows how to:
 * Post to a GitHub branch PR with an in progress status for the
-  stage site setup. (TODO: make optional)
+  stage site setup.
 * Pull in a repo locally.
 * Checkout a specific branch.
 * Start docker-compose session
 * Post back to GitHub branch PR with link for QA site or failure
-  status. (TODO: make optinal)
+  status.
 * When a PR is merged or closed the resources can be released/recovered.
 
 Currently, Roper only defines a cli interface so there is no way for GitHub

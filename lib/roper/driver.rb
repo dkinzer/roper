@@ -6,7 +6,7 @@ module Roper
   # This class is concerned with docker-compose process
   class Driver
     # @param [String] repo A GitHub reposiory in the form <user>/<name>
-    # @param [branch] the name of a branch in the reposiory
+    # @param [String] branch The name of a branch in the reposiory
     def initialize(repo, branch)
       @repo = Octokit::Repository.new(repo)
       @branch = branch
