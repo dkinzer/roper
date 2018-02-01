@@ -22,11 +22,10 @@ module Roper
     # @see https://octokit.github.io/octokit.rb/Octokit/Client/Statuses.html
     #
     # @param state [String] The state: pending, success, failure
-    # @param options [Hash] A customizable set of options
     #
-    # @option :context [String] A context to differentiate this status from others (default: "roper")
-    # @option :target_url [String] A link to more details about this status
-    # @option :description [String] A short human-readable description of this status
+    # @param options [Hash] A customizable set of options
+    # @option options [String] :target_url A link to the built site
+    # @option options [String] :description A short human-readable description of this status
     #
     # @return [Sawyer::Resource] A short human-readable description of this status
     def create_status(state, options = {})
