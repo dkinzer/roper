@@ -26,8 +26,6 @@ module Roper
     # @param options [Hash] A customizable set of options
     # @option options [String] :target_url A link to the built site
     # @option options [String] :description A short human-readable description of this status
-    #
-    # @return [Sawyer::Resource] A short human-readable description of this status
     def create_status(state, options = {})
       @client.create_status(@repo, @ref, state, options.merge(context: "roper"))
     end
