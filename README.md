@@ -2,13 +2,15 @@
 
 <p align="center"><img src="Figure-eight_knot.svg"></p>
 
-Roper is a cli tool used to help stage a dockerized web app.  There are some
-assumptions made about the environment that roper runs in.  The main one is
-that traefik has been configured to run via the docker backend and that the
-dockerized web application uses a docker-compose.yml file that knows how to
-communicate with traefik.
+Roper is a CLI tool used to help stage a Dockerized web app.  It's name is
+a play on it's two main commands (`lasso` and `release`).
 
-Another assuption made is that the repository for the web applications roper is
+There are some assumptions made about the environment that roper runs in.  The
+main one is that Traefik has been configured to run via the docker back-end and
+that the Dockerized web application uses a `docker-compose.ym` file that knows
+how to communicate with Traefik.
+
+Another assumption made is that the repository for the web applications roper is
 concerned with lives at GitHub: At this point I have no intention of supporting
 another git repository service.
 
@@ -22,16 +24,16 @@ Once Roper is configured it knows how to:
   status.
 * When a PR is merged or closed the resources can be released/recovered.
 
-Currently, Roper only defines a cli interface so there is no way for GitHub
-to communicate with it direclty via a webhook or whatnot. It's assumed that it
-will be used in conjuction with a service like jenkins ci to handle the webook
-part of the communication and trigger a roper staging on a desired Github event
+Currently, Roper only defines a CLI interface so there is no way for GitHub
+to communicate with it directly via a web-hook or whatnot. It's assumed that it
+will be used in conjunction with a service like Jenkins CI to handle the web-hook
+part of the communication and trigger a roper staging on a desired GitHub event
 (PR creation, update to PR, merge of PR).
 
 Eventually it would be nice for Roper to include a web service interface that
-GitHub can post direclty to. But then again, that might just be scope creep
-considering there are already good options for handling the webhook concern
-(i.e. jenkins)
+GitHub can post directly to. But then again, that might just be scope creep
+considering there are already good options for handling the web-hook concern
+(i.e. Jenkins)
 
 ## Installation
 
@@ -58,7 +60,9 @@ OR:
 You can use the individual components of the library as you wish.
 
 ## Github Authentication
-Currenlty Roper uses netrc for github authentication.  I'm hoping to slap an interface to create this at setup but for now you will need to add a ~/.netrc file with an entry for `api.github.com` manually.
+Currenlty Roper uses netrc for github authentication.  I'm hoping to slap an
+interface to create this at setup but for now you will need to add a ~/.netrc
+file with an entry for `api.github.com` manually.
 
 ## Development
 
