@@ -24,6 +24,16 @@ Once Roper is configured it knows how to:
   status.
 * When a PR is merged or closed the resources can be released/recovered.
 
+Roper also defines the following environment variables which are made available
+during the `docker-compose up` phase and can therefore be referenced in your
+`docker-compose.yml` file
+
+| variable | description |
+| -------- | ------------|
+| ROPER_REPO_OWNERR | GitHub repository owner |
+| ROPER_REPO_NAME | GitHub repository name |
+| ROPER_REPO_BRANCH | GitHub repository branch |
+
 Currently, Roper only defines a CLI interface so there is no way for GitHub
 to communicate with it directly via a web-hook or whatnot. It's assumed that it
 will be used in conjunction with a service like Jenkins CI to handle the web-hook

@@ -10,15 +10,15 @@ module Roper
   # library.  It composes Hub, Repo and Driver to define the main entry
   # methods, lasso and release.
   class CLI
-    # @param [String] repo A GitHub reposiory in the form <user>/<name>
-    # @param [String] branch The name of a branch in the reposiory
+    # @param [String] repo A GitHub repository in the form <user>/<name>
+    # @param [String] branch The name of a branch in the repository
     #
     # @param [Hash] options A customizable set of options
     # @option options [String] :context A context to differentiate this status from others (default: "roper")
     # @option options [String] :status_url A link to more details about this status
     # @option options [String] :sha ref The sha for a commit
     # @option options [String] :protocol https or http
-    # @option options [String] :domain Domain for traefik server
+    # @option options [String] :domain Domain for Traefik server
     def initialize(repo, branch, options = {})
       @repo = repo
       @branch = branch
