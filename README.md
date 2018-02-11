@@ -30,9 +30,9 @@ during the `docker-compose up` phase and can therefore be referenced in your
 
 | variable | description |
 | -------- | ------------|
-| ROPER_REPO_OWNERR | GitHub repository owner |
-| ROPER_REPO_NAME | GitHub repository name |
-| ROPER_REPO_BRANCH | GitHub repository branch |
+| ROPER_REPO_OWNER | The GitHub repository owner |
+| ROPER_REPO_NAME | The GitHub repository name |
+| ROPER_REPO_BRANCH | The GitHub repository branch |
 
 Currently, Roper only defines a CLI interface so there is no way for GitHub
 to communicate with it directly via a web-hook or whatnot. It's assumed that it
