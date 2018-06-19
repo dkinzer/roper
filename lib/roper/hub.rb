@@ -29,5 +29,18 @@ module Roper
     def create_status(state, options = {})
       @client.create_status(@repo, @ref, state, options.merge(context: "roper"))
     end
+
+    def self.create(repo, ref, options = {})
+      if options["disable-hub"]
+        DumbHub.new(repo, ref)
+      else
+        self.new(repo, ref)
+      end
+    end
+  end
+
+  class DumbHub < Hub
+    def create_status(state, options = {})
+    end
   end
 end

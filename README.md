@@ -49,15 +49,20 @@ considering there are already good options for handling the web-hook concern
 
 Add this line to your application's Gemfile:
 
-```ruby gem 'roper' ```
+```
+ruby gem 'roper'
+```
 
 And then execute:
 
-    $ bundle
-
+```
+bundle
+```
 Or install it yourself as:
 
-    $ gem install roper
+```
+gem install roper
+```
 
 ## Usage
 
@@ -68,6 +73,26 @@ Or install it yourself as:
 OR:
 
 You can use the individual components of the library as you wish.
+
+## Configuration
+`roper` is configure ready. Use `roper initconfig`. This command will create
+a `.roper.rc` configuration file in your home directory.  The file is in yaml
+format and you can provide default arguments for any roper command.
+
+The following `roper.rc` configuration file example provides a default value
+for the repository:
+
+```
+---
+:version: false
+:help: false
+commands:
+  :lasso:
+    :r: "tulibraries/tul_cob"
+  :release:
+    :r: "tulibraries/tul_cob"
+```
+
 
 ## Github Authentication
 Currenlty Roper uses netrc for github authentication.  I'm hoping to slap an
@@ -85,6 +110,7 @@ release a new version, update the version number in `version.rb`, and then run
 `bundle exec rake release`, which will create a git tag for the version, push
 git commits and tags, and push the `.gem` file to
 [rubygems.org](https://rubygems.org).
+
 
 ## Contributing
 

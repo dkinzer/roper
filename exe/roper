@@ -5,9 +5,13 @@ require "roper"
 
 include GLI::App
 
+config_file ".roper.rc"
+
 program_desc "Roper is a CLI tool used to help stage a dockerized web app."
 
 version Roper::VERSION
+
+flag [:nh, "no-hub", "disable-hub"], desc: "Do not interact with GitHub", default_value: false
 
 subcommand_option_handling :normal
 arguments :strict
@@ -19,8 +23,8 @@ command :lasso do |c|
   c.flag :r, :repo
 
   c.desc "The branch name"
-  c.flag :b, :branch
   c.default_value "master"
+  c.flag :b, :branch
 
   c.desc "The sha reference that we will post to"
   c.flag :s, :sha
@@ -38,7 +42,7 @@ command :lasso do |c|
   c.action do |global_options, options, args|
     repo = options[:repo]
     branch = options[:branch]
-    Roper::CLI.lasso(repo, branch, options)
+    Roper::CLI.lasso(repo, branch, global_options.merge(options))
     puts "lasso command ran"
   end
 end
@@ -49,13 +53,13 @@ command :release do |c|
   c.flag :r, :repo
 
   c.desc "The branch name"
-  c.flag :b, :branch
   c.default_value "master"
+  c.flag :b, :branch
 
   c.action do |global_options, options, args|
     repo = options[:repo]
     branch = options[:branch]
-    Roper::CLI.release(repo, branch, options)
+    Roper::CLI.release(repo, branch, global_options.merge(options))
     puts "release command ran"
   end
 end

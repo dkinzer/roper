@@ -46,7 +46,7 @@ module Roper
     # Update the GitHub PR with a pending status, then pull in the repository
     # and build it by running docker-compose up on it
     def lasso
-      @hub ||= Roper::Hub.new(@repo, ref)
+      @hub ||= Roper::Hub.create(@repo, ref, @options)
       @hub.create_status("pending", status_pending.merge(status_url))
       begin
         @git.mount || @git.update
