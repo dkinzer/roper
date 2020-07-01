@@ -23,7 +23,7 @@ command :lasso do |c|
   c.flag :r, :repo
 
   c.desc "The branch name"
-  c.default_value "master"
+  c.default_value "main"
   c.flag :b, :branch
 
   c.desc "The sha reference that we will post to"
@@ -53,7 +53,7 @@ command :release do |c|
   c.flag :r, :repo
 
   c.desc "The branch name"
-  c.default_value "master"
+  c.default_value "main"
   c.flag :b, :branch
 
   c.action do |global_options, options, args|
