@@ -64,34 +64,34 @@ module Roper
     end
 
     private
-      def ref
-        @options[:sha] || begin
-          @git.mount || @git.update
-          @git.ref
-        end
+    def ref
+      @options[:sha] || begin
+        @git.mount || @git.update
+        @git.ref
       end
+    end
 
-      def status_url
-        status_url = @options[:status_url]
-        status_url ? { target_url: status_url } : {}
-      end
+    def status_url
+      status_url = @options[:status_url]
+      status_url ? { target_url: status_url } : {}
+    end
 
-      def success_url
-        protocol = @options[:protocol] || "https"
-        domain = @options[:domain] || ENV["DOMAIN"]
-        {  target_url: "#{protocol}://#{@branch}.#{domain}" }
-      end
+    def success_url
+      protocol = @options[:protocol] || "https"
+      domain = @options[:domain] || ENV["DOMAIN"]
+      {  target_url: "#{protocol}://#{@branch}.#{domain}" }
+    end
 
-      def status_pending
-        { description: "The build process is in progress." }
-      end
+    def status_pending
+      { description: "The build process is in progress." }
+    end
 
-      def status_failure
-        { description: "The PR branch failed to build." }
-      end
+    def status_failure
+      { description: "The PR branch failed to build." }
+    end
 
-      def status_success
-        { description: "The PR brach was successfully built." }
-      end
+    def status_success
+      { description: "The PR brach was successfully built." }
+    end
   end
 end

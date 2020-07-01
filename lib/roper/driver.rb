@@ -26,10 +26,10 @@ module Roper
     end
 
     private
-      def set_env_variables
-        ENV["ROPER_REPO_OWNER"] = @repo.owner
-        ENV["ROPER_REPO_NAME"] = @repo.name
-        ENV["ROPER_REPO_BRANCH"] = @branch
-      end
+    def set_env_variables
+      ENV["ROPER_REPO_OWNER"] = @repo.owner
+      ENV["ROPER_REPO_NAME"] = @repo.name
+      ENV["ROPER_REPO_BRANCH"] = @branch
+    end
   end
 end

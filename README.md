@@ -1,4 +1,4 @@
-# Roper [![Build Status](https://travis-ci.org/tulibraries/roper.svg?branch=master)](https://travis-ci.org/tulibraries/roper) [![Coverage Status](https://coveralls.io/repos/github/tulibraries/roper/badge.svg?branch=master)](https://coveralls.io/github/tulibraries/roper?branch=master) [![Docs](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/github/tulibraries/roper/master)
+# Roper [![Build Status](https://travis-ci.org/tulibraries/roper.svg?branch=main)](https://travis-ci.org/tulibraries/roper) [![Coverage Status](https://coveralls.io/repos/github/tulibraries/roper/badge.svg?branch=main)](https://coveralls.io/github/tulibraries/roper?branch=main) [![Docs](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/github/tulibraries/roper/main)
 
 <p align="center"><img src="Figure-eight_knot.svg"></p>
 
@@ -128,4 +128,4 @@ License](http://opensource.org/licenses/MIT).
 
 Everyone interacting in the Roper project’s codebases, issue trackers, chat
 rooms and mailing lists is expected to follow the [code of
-conduct](https://github.com/tulibraries/roper/blob/master/CODE_OF_CONDUCT.md).
+conduct](https://github.com/tulibraries/roper/blob/main/CODE_OF_CONDUCT.md).
