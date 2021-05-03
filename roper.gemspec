@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "netrc", "~> 0.11"
   spec.add_dependency "octokit", "~> 4.8"
 
-  spec.add_development_dependency "binding_of_caller", "~> 0.7"
+  spec.add_development_dependency "binding_of_caller", "~> 1.0"
   spec.add_development_dependency "coveralls", "~> 0.7"
   spec.add_development_dependency "guard", "~> 2.14"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
