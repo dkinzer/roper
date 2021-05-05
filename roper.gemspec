@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["David Kinzer"]
   spec.email         = ["dtkinzer@gmail.com"]
 
-  spec.summary       = " Stages dockerized web apps in a Traefik environment. "
-  spec.description   = " Command line tool for staging dockerized Github web apps in a Traefik docker environment."
+  spec.summary       = "Stages dockerized web apps in a Traefik environment."
+  spec.description   = "Command line tool for staging dockerized Github web apps in a Traefik docker environment."
   spec.homepage      = "https://github.com/tulibraries/roper"
   spec.platform      = Gem::Platform::RUBY
   spec.license       = "MIT"
