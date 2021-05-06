@@ -10,9 +10,7 @@ main one is that Traefik has been configured to run via the docker back-end and
 that the Dockerized web application uses a `docker-compose.ym` file that knows
 how to communicate with Traefik.
 
-Another assumption made is that the repository for the web applications roper is
-concerned with lives at GitHub: At this point I have no intention of supporting
-another git repository service.
+Another assumption made is that the repository for the web applications roper is concerned with lives at GitHub: At this point I have no intention of supporting another git repository service.
 
 Once Roper is configured it knows how to:
 * Post to a GitHub branch PR with an in progress status for the
