@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "git", "~> 1.3"
   spec.add_dependency "gli", "~> 2.17"
   spec.add_dependency "netrc", "~> 0.11"
-  spec.add_dependency "octokit", "~> 4.8"
+  spec.add_dependency "octokit", ">= 4.8", "< 7.0"
 
   spec.add_development_dependency "binding_of_caller", "~> 1.0"
   spec.add_development_dependency "coveralls", "~> 0.7"
